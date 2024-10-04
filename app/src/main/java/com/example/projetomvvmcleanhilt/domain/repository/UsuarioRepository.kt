@@ -4,5 +4,5 @@ import com.example.projetomvvmcleanhilt.domain.model.Usuario
 
 interface UsuarioRepository {
 
-    suspend fun rexccuperarUsuarios(): List<Usuario>
+    suspend fun recuperarUsuarios(): List<Usuario>
 }

@@ -1,5 +1,7 @@
 package com.example.projetomvvmcleanhilt.data.dto
 
+import com.example.projetomvvmcleanhilt.domain.model.Usuario
+
 data class UsuarioDTO(
     val address: Address,
     val age: Int,
@@ -30,3 +32,14 @@ data class UsuarioDTO(
     val username: String,
     val weight: Double
 )
+
+fun UsuarioDTO.toUsuario(): Usuario {
+    return Usuario(
+        nome = this.firstName,
+        sobrenome = this.lastName,
+        idade = this.age,
+        email = this.email,
+        telefone = this.phone,
+        imagem = this.image
+    )
+}

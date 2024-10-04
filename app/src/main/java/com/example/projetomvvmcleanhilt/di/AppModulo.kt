@@ -1,6 +1,9 @@
 package com.example.projetomvvmcleanhilt.di
 
 import com.example.projetomvvmcleanhilt.data.remote.DummyAPI
+import com.example.projetomvvmcleanhilt.data.repository.UsuarioRepositoryimpl
+import com.example.projetomvvmcleanhilt.domain.repository.UsuarioRepository
+import com.example.projetomvvmcleanhilt.domain.usecase.GetUsuariosUseCase
 import com.example.projetomvvmcleanhilt.util.Constantes
 import dagger.Module
 import dagger.Provides
@@ -26,5 +29,12 @@ object AppModulo {
         return retrofit.create(DummyAPI::class.java)
     }
 
-
+    @Provides
+    fun proverUsuarioRepository(dummyAPI: DummyAPI):UsuarioRepository {
+        return UsuarioRepositoryimpl(dummyAPI)
+    }
+    @Provides
+    fun proverUsuariosUseCase(usuarioRepository: UsuarioRepository): GetUsuariosUseCase {
+        return GetUsuariosUseCase(usuarioRepository)
+    }
 }
